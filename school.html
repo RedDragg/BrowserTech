@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    fieldset{
+        display: block;
+        background-color: yellow;
+    }
+    fieldset:target{
+        display: none;
+    }
+</style>
+<body>
+    <a href="#1a">Linkje</a>
+    <fieldset id="1a">
+        ...2
+    </fieldset>
+
+    <img src="" alt="" width="200" height="200" alt="Plaatje">
+
+    <button popovertarget="popup">open ies</button>
+    <dialog popover id="popup">
+        <p>hallo</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nam, dolore repellat atque velit officia? Ratione perspiciatis, temporibus unde dolores sapiente ad corrupti explicabo veniam quae eligendi ab saepe tempora.</p>
+        <button popovertarget="popup" popovertargetaction="hide">sluit dit ding weer</button>
+    </dialog>
+    <button popovertarget="popup2">open ies2</button>
+    <dialog popover id="popup2">
+        <p>hallo</p>
+        <p>Lorem ipsum, dolor sit lores sapiente ad corrupti explicabo veniam quae eligendi ab saepe tempora.</p>
+        <button popovertarget="popup2" popovertargetaction="hide">sluit dit ding weer</button>
+    </dialog>
+</body>
+</html>

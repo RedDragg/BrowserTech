@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NS-formulier</title>
+</head>
+<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/fonts.css">
+<body>
+    <nav class="navbar">
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.13 20">
+            <defs>
+            </defs>
+            <path class="cls-1" d="M22.36,9.6c-1.04-1.03-2.45-1.6-3.91-1.6H7.62l4.01-4h10.13c.42.02.81.2,1.1.5l5.91,5.9c1.04,1.03,2.45,1.6,3.91,1.6h10.83l-4.01,4h-10.12c-.42-.02-.81-.2-1.1-.5l-5.92-5.9ZM25.47,18.3c1.06,1.02,2.44,1.62,3.91,1.7h11.73l10.03-10L41.11,0h-5.61l8.02,8h-10.83c-.4-.03-.78-.17-1.1-.4l-5.92-5.9c-1.06-1.02-2.44-1.62-3.91-1.7h-11.73L0,10l10.03,10h5.61l-8.02-8h10.83c.4.03.78.17,1.1.4l5.92,5.9Z"/>
+          </svg>
+            <h1>NS</h1>
+            <input type="checkbox" id="darkmode">
+            <label for="darkmode" class="toggle"></label>
+    </nav>
+
+    <main>
+        <div></div>
+        <form>
+            <fieldset>
+                <legend>1a</legend>
+                <label for="voornaam">Voorletter(s), tussen-voegsel(s) en achternaam</label>
+                <input type="text" id="voornaam" name="voornaam" pattern="[A-Za-zÀ-ÿ\s]+" 
+                title="Alleen letters gebruiken" 
+                oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')"
+                maxlength="50">
+                <label for="tussenvoegsels">Tussenvoegsels</label>
+                <input type="text" id="tussenvoegsels" name="tussenvoegsels" pattern="[A-Za-zÀ-ÿ\s]+" 
+                title="Alleen letters gebruiken" 
+                oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')"
+                maxlength="50">
+                <label for="achternaam">Achternaam</label>
+                <input type="text" id="achternaam" name="achternaam" pattern="[A-Za-zÀ-ÿ\s]+" 
+                title="Alleen letters gebruiken" 
+                oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')"
+                maxlength="50">
+
+                <label for="bsn">Burgerservicenummer overledene</label><br>
+                <input type="number" id="bsn" name="bsn" placeholder="BSN" min="0" step="1">
+
+                <label for="datum">Overlijdensdatum</label><br>
+                <input type="date" id="dag" name="dag" placeholder="DD" min="1" max="31" inputmode="numeric" pattern="[0-9]*" size="2"> -
+                <input type="date" id="maand" name="maand" placeholder="MM" min="1" max="12" inputmode="numeric" pattern="[0-9]*" size="2"> -
+                <input type="date" id="jaar" name="jaar" placeholder="JJJJ" min="1900" max="2099" inputmode="numeric" pattern="[0-9]*" size="4">
+            </fieldset>
+
+            <fieldset>
+                <legend>1b</legend>
+                <fieldset>
+                    <legend>Was de overledene getrouwd of had de overledene een geregistreerd partner op het moment van overlijden?</legend>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                        
+                </fieldset>
+            </fieldset>
+
+        </form>
+    </main>
+</body>
+</html>

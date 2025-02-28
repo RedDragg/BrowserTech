@@ -1,0 +1,89 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  font-family: "snssans";
+  transition: background-color 0.3s, color 0.3s;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
+
+:root {
+  --text-color: #000; /* Dark mode kleur */
+  --bg-color: #e6e6e9;
+  --nav-bg:#fff;
+  --toggle-bg: #ddd;
+  --toggle-circle: #fff;
+  --nav-text-color:#000;
+}
+
+html:has(#darkmode:checked) {
+  /* Wanneer de label met id darkmode is gechecked dan gaan deze kleuren in, daarom zijn ze dezelfde naam. */
+  /* Dark mode kleur */
+  --text-color: #fff;
+  --bg-color: #000;
+  --toggle-bg: #333;
+  --toggle-circle: #ff0;
+}
+
+#darkmode {
+  display: none;
+}
+
+/* Toggle button styling */
+.toggle {
+  width: 50px;
+  height: 25px;
+  background: var(--toggle-bg);
+  display: block;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: var(--toggle-circle);
+  position: absolute;
+  top: 2.5px;
+  left: 3px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--nav-bg);
+  padding: 10px 20px;
+  color: var(--text-color);
+  box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;;
+
+  svg{
+    fill: #003082;
+    height: auto;
+    width: 100px;
+  }
+  svg:hover{
+    fill: #ffc700;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  /* Positie aanpassen in dark mode */
+  input:checked + .toggle::after {
+    left: 27px;
+  }
+
+  input {
+    display: none;
+  }
+}

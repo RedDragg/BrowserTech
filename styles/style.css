@@ -32,7 +32,30 @@ html:has(#darkmode:checked) {
   display: none;
 }
 
-/* Toggle button styling */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--nav-bg);
+  padding: 10px 20px;
+  color: black;
+  box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;;
+
+  svg{
+    fill: #003082;
+    height: auto;
+    width: 100px;
+  }
+  svg:hover{
+    fill: #ffc700;
+    cursor: pointer;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  /* Toggle button styling */
 .toggle {
   width: 50px;
   height: 25px;
@@ -55,35 +78,42 @@ html:has(#darkmode:checked) {
   transition: 0.3s;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--nav-bg);
-  padding: 10px 20px;
-  color: var(--text-color);
-  box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;;
-
-  svg{
-    fill: #003082;
-    height: auto;
-    width: 100px;
-  }
-  svg:hover{
-    fill: #ffc700;
-    cursor: pointer;
-  }
-
-  p {
-    font-size: 18px;
-  }
-
   /* Positie aanpassen in dark mode */
-  input:checked + .toggle::after {
+  &:has(input:checked) .toggle::after {
     left: 27px;
-  }
+}
 
   input {
     display: none;
   }
+
+}
+
+section{
+  max-width: 800px;
+}
+
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+
+.Gegevens-overledene fieldset:nth-of-type(2){
+  &:has(#nee1:checked) > fieldset:nth-of-type(n + 2){
+    display: none;
+    pointer-events: none;
+  }
+
+  fieldset:nth-of-type(2) label:last-of-type{
+    display: none;
+  }
+
+  &:has(#ja-1b-2:checked) > fieldset:nth-of-type(2) label:last-of-type{
+    display: block;
+  }
+
+
+
 }

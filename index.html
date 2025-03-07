@@ -28,28 +28,25 @@
             <form>
                 <fieldset>
                     <legend>1a</legend>
-                    <label for="voornaam">Voorletter(s),</label> 
-                    <label for="tussenvoegsel">tussen-voegsel(s)</label> 
-                    <label for="achternaam">en achternaam</label>
-                        
-                        <input type="text" id="voornaam" name="voornaam" pattern="[A-Za-zÀ-ÿ\s]+"  maxlength="50">
-                        <input type="text" id="tussenvoegsel" name="tussenvoegsels" pattern="[A-Za-zÀ-ÿ\s]+" maxlength="50">
-                        <input type="text" id="achternaam" name="achternaam" pattern="[A-Za-zÀ-ÿ\s]+" maxlength="50">
-
-
-                    <label for="bsn">
-                        Burgerservicenummer overledene
-                        <input type="number" id="bsn" name="bsn" placeholder="BSN" min="0" step="1">
-                    </label>
-    
-                    <label for="dag">Overlijdensdatum</label>
-                    <label for="maand"></label>
-                    <label for="jaar"></label>
-                        <input type="number" name="dag" placeholder="DD" min="1" max="31" inputmode="numeric" pattern="[0-9]*" size="2" required> -
-                        <input type="number" name="maand" placeholder="MM" min="1" max="12" inputmode="numeric" pattern="[0-9]*" size="2" required> -
-                        <input type="number" name="jaar" placeholder="JJJJ" min="1900" max="2099" inputmode="numeric" pattern="[0-9]*" size="4" required>
-                    <br>
-                    
+                    <ul>
+                        <li>
+                            <label for="voornaam">Voorletter(s)<input type="text" id="voornaam" name="voornaam" pattern="[A-Za-zÀ-ÿ\s]+"  maxlength="50"></label> 
+                            <label for="tussenvoegsel">tussen-voegsel(s)<input type="text" id="tussenvoegsel" name="tussenvoegsels" pattern="[A-Za-zÀ-ÿ\s]+" maxlength="50"></label> 
+                            <label for="achternaam">achternaam<input type="text" id="achternaam" name="achternaam" pattern="[A-Za-zÀ-ÿ\s]+" maxlength="50"></label>
+                        </li>
+                            <li>   
+                                <label for="bsn">
+                                    Burgerservicenummer overledene
+                                    <input type="number" id="bsn" name="bsn" placeholder="BSN" min="0" step="1">
+                                </label>
+                            </li>
+                            <li>
+                                <p>Overlijdensdatum</p>                    
+                                <label for="dag"><input type="number" name="dag" placeholder="DD" min="1" max="31" inputmode="numeric" pattern="[0-9]*" size="2" required> -</label>
+                                <label for="maand"><input type="number" name="maand" placeholder="MM" min="1" max="12" inputmode="numeric" pattern="[0-9]*" size="2" required> -</label>
+                                <label for="jaar"><input type="number" name="jaar" placeholder="JJJJ" min="1900" max="2099" inputmode="numeric" pattern="[0-9]*" size="4" required></label>
+                            </li>
+                    </ul>
                 </fieldset>
     
                 <fieldset>
@@ -105,9 +102,17 @@
             </form>
         </section>
         <section class="gegevens-gemachtigde">
-            <form action="" >
+            <h1><span>2</span> Gegevens gemachtigde</h1>
+            <p>Vul de gegevens van de gemachtigde in. De gemachtigde is degene die namens 1 of meerdere personen en/of instellingen aangifte doet.</p>
+            <p>Het invullen van een telefoonnummer of e-mailadres is niet verplicht, maar wel handig. Dan kunnen wij u makkelijker vragen stellen of uitleg geven.</p>
+            <form>
             <fieldset>
-                <legend>Gegevens gemachtigde</legend>
+                <legend>2a</legend>
+                <p>Vul 1 van de 3 in: het burgerservicenummer of RSIN van de gemachtigde, het beconnummer van de adviseur of
+                    het protocolnummer van de notaris.</p>
+                <label>BSN nummer<input type="text" id="bsn" name="bsn" pattern="\d{9}" maxlength="9" placeholder="Voer uw BSN in" required></label>
+                <label>beconnummer<input type="text" id="beconnummer" name="beconnummer" pattern="\d{1,6}" maxlength="6" placeholder="Beconnummer (max. 6 cijfers)" required></label>
+                <label>protocolnummer<input type="text" id="protocolnummer" name="protocolnummer" maxlength="20" pattern="[A-Za-z0-9\- ]+" placeholder="Protocolnummer notaris" required></label>
             </fieldset>
         </form>
         </section>

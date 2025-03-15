@@ -7,7 +7,7 @@
 html,
 body {
   overflow-x: clip;
-  font-family: "snssans";
+  font-family: "nssans";
   transition: background-color 0.3s, color 0.3s;
   background-repeat: no-repeat;
   background-image: linear-gradient(to bottom, var(--secundaire-color) 500px , var(--toggle-bg) 0);
@@ -45,7 +45,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   background: var(--nav-bg);
-  padding: 10px 20px;
+  padding: 2em;
   color: black;
   box-shadow: rgba(14, 63, 126, 0.06) 0px 0px 0px 1px, rgba(42, 51, 70, 0.03) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 2px 2px -1px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.03) 0px 5px 5px -2.5px, rgba(42, 51, 70, 0.03) 0px 10px 10px -5px, rgba(42, 51, 70, 0.03) 0px 24px 24px -8px;;
 
@@ -96,9 +96,15 @@ nav {
   }
 
 }
+form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-section{
-  max-width: 1000px;
+
+main > fieldset{
   background-color: var(--bg-color);
   padding: 2em;
   border-radius: 1em;
@@ -109,15 +115,40 @@ main{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   padding: 1em;
   gap: 2em;
+
+  aside{
+    position: absolute;
+    left: 0;
+    top: 2em;
+    width: max-content;
+    height: 100%;
+
+    ul{
+      position: sticky;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  
 }
 
 ul{
   list-style: none;
 }
+fieldset{
+  border: none;
+  padding: 1rem 1rem 1rem 0;
 
+}
 .Gegevens-overledene {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   form > fieldset > legend{
     background-color: #003082;
     padding: .5rem;
@@ -126,7 +157,6 @@ ul{
   }
 
   fieldset:nth-of-type(1){
-    padding: .5rem;
 
     ul{
       display: flex;
@@ -190,9 +220,48 @@ ul{
 
 
 
-
+#voornaam:user-invalid{
+  border: none;
+  padding: 1em;
+  border-left: red solid 5px !important;
+}
 
 
 .gegevens-gemachtigde form fieldset:has(input:not(:placeholder-shown)) label:has(input:placeholder-shown) {
   display: none;
+}
+
+aside li{
+  display: none;
+}
+
+[id^="page-"] {
+  display: block;
+}
+
+@supports selector(:target) {
+  [id^="page-"] {
+    display: none;
+  }
+
+  [id^="page-"]:target {
+    display: block;
+  }
+
+  /* credit: Vivanne */
+  body:not(:has([id^=page-]:target)) #page-one {
+    display: grid;
+  }
+
+  main:has(#page-two:target) #page-one{
+  display: none;
+}
+
+main:has(#page-two:target) aside li:first-of-type {
+  display: block;
+}
+
+main:has(#page-three:target) aside li:nth-of-type(2) {
+  display: block;
+}
 }

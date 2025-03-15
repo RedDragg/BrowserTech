@@ -1,0 +1,1 @@
+Document.body.classname += "string";

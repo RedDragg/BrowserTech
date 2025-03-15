@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NS-formulier</title>
+</head>
+<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/fonts.css">
+<body>
+    <nav class="navbar">
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.13 20">
+            <defs>
+            </defs>
+            <path class="cls-1" d="M22.36,9.6c-1.04-1.03-2.45-1.6-3.91-1.6H7.62l4.01-4h10.13c.42.02.81.2,1.1.5l5.91,5.9c1.04,1.03,2.45,1.6,3.91,1.6h10.83l-4.01,4h-10.12c-.42-.02-.81-.2-1.1-.5l-5.92-5.9ZM25.47,18.3c1.06,1.02,2.44,1.62,3.91,1.7h11.73l10.03-10L41.11,0h-5.61l8.02,8h-10.83c-.4-.03-.78-.17-1.1-.4l-5.92-5.9c-1.06-1.02-2.44-1.62-3.91-1.7h-11.73L0,10l10.03,10h5.61l-8.02-8h10.83c.4.03.78.17,1.1.4l5.92,5.9Z"/>
+          </svg>
+            <h1>NS</h1>
+            <label for="darkmode" class="toggle"></label>
+            <input type="checkbox" id="darkmode">
+    </nav>
+
+<form>
+
+
+
+    <main>
+        <aside>
+            <ul>
+            <li><a href="#page-one">1</a></li>
+            <li><a href="#page-two">2</a></li>
+            <li><a href="#page-three">3</a></li>
+            <li><a href="#page-four">4</a></li>
+        </ul>
+        </aside>
+
+        <fieldset class="Gegevens-overlefdene" id="page-one">
+            <h1><span>1</span> gegevens van de overledene</h1>
+            <p>Vul hier de gegevens in van de overledene</p>
+
+            
+                <fieldset>
+                    <legend>1a</legend>
+                    <ul>
+                        <li>
+                            <label for="voornaam">Voorletter(s)<input type="text" id="voornaam" name="voornaam" pattern="[A-Za-zÀ-ÿ\s]+"  maxlength="50"></label> 
+                            <label for="tussenvoegsel">tussen-voegsel(s)<input type="text" id="tussenvoegsel" name="tussenvoegsels" pattern="[A-Za-zÀ-ÿ\s]+" maxlength="50"></label> 
+                            <label for="achternaam">achternaam<input type="text" id="achternaam" name="achternaam" pattern="[A-Za-zÀ-ÿ\s]+" maxlength="50"></label>
+                        </li>
+                        <li>   
+                            <label for="bsn">
+                                Burgerservicenummer overledene
+                                <input type="number" id="bsn" name="bsn" placeholder="BSN" min="0" step="1">
+                            </label>
+                        </li>
+                        <li>
+                            <p>Overlijdensdatum</p>                    
+                            <label for="dag"><input type="number" name="dag" placeholder="DD" min="1" max="31" inputmode="numeric" pattern="[0-9]*" size="2" required> -</label>
+                            <label for="maand"><input type="number" name="maand" placeholder="MM" min="1" max="12" inputmode="numeric" pattern="[0-9]*" size="2" required> -</label>
+                            <label for="jaar"><input type="number" name="jaar" placeholder="JJJJ" min="1900" max="2099" inputmode="numeric" pattern="[0-9]*" size="4" required></label>
+                        </li>
+                    </ul>
+                </fieldset>
+    
+                <fieldset>
+                    <legend>1b</legend>
+                    <fieldset>
+                        <legend>Was de overledene getrouwd of had de overledene een geregistreerd partner op het moment van overlijden?</legend>
+                            <label for="nee1">
+                                <input type="radio" id="nee1" name="1b-1" value="nee" required>
+                                Nee, Ga verder met vraag 1c
+                            </label>
+                            
+                            <label>
+                                <input type="radio" id="ja" name="1b-1" value="ja" required>
+                                Ja
+                            </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Hadden de overledene en diens echtgenoot of geregistreerd partner huwelijkse of partner schaps-voorwaarden laten vastleggen in een notariële akte?</legend>
+                        <label>
+                            <input type="radio" id="nee" name="1b-2" value="nee">
+                            Nee
+                        </label>
+                        
+                        <label>
+                            <input type="radio" id="ja-1b-2" name="1b-2" value="ja">
+                            Ja, Stuur een kopie van de akte mee met de aangifte.
+                        </label>
+                        <label>
+                            <input type="file" accept="image/*,.pdf" />
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Hadden de overledene en diens partner een finaal verrekenbeding?</legend>
+                        <label>
+                            <input type="radio" id="nee" name="1b-3" value="nee">
+                            Nee
+                        </label>
+                        
+                        <label>
+                            <input type="radio" id="ja" name="1b-3" value="ja">
+                            Ja
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Datum huwelijkse of partnerschapsvoorwaarden</legend>
+                        <label for="huwelijksdatum">
+                            <input type="number" id="huwelijksdatum" name="dag" placeholder="DD" min="1" max="31" inputmode="numeric" pattern="[0-9]*" size="2" required> -
+                            <input type="number" id="huwelijksdatum" name="maand" placeholder="MM" min="1" max="12" inputmode="numeric" pattern="[0-9]*" size="2" required> -
+                            <input type="number" id="huwelijksdatum" name="jaar" placeholder="JJJJ" min="1900" max="2099" inputmode="numeric" pattern="[0-9]*" size="4" required>
+                        </label>
+                    </fieldset>
+                </fieldset>
+                    <a href="#page-two">volgende</a>
+
+            </fieldset>
+        <fieldset class="gegevens-gemachtigde" id="page-two">
+            <h1><span>2</span> Gegevens gemachtigde</h1>
+            <p>Vul de gegevens van de gemachtigde in. De gemachtigde is degene die namens 1 of meerdere personen en/of instellingen aangifte doet.</p>
+            <p>Het invullen van een telefoonnummer of e-mailadres is niet verplicht, maar wel handig. Dan kunnen wij u makkelijker vragen stellen of uitleg geven.</p>
+            <form>
+            <fieldset>
+                <legend>2a</legend>
+                <p>Vul 1 van de 3 in: het burgerservicenummer of RSIN van de gemachtigde, het beconnummer van de adviseur of
+                    het protocolnummer van de notaris.</p>
+                <label>BSN nummer<input type="text" id="bsn" name="bsn" pattern="\d{9}" maxlength="9" placeholder="Voer uw BSN in" required></label>
+                <label>beconnummer<input type="text" id="beconnummer" name="beconnummer" pattern="\d{1,6}" maxlength="6" placeholder="Beconnummer (max. 6 cijfers)" required></label>
+                <label>protocolnummer<input type="text" id="protocolnummer" name="protocolnummer" maxlength="20" pattern="[A-Za-z0-9\- ]+" placeholder="Protocolnummer notaris" required></label>
+            </fieldset>
+            <a href="#page-three">Volgende</a>
+        </fieldset>
+
+        <fieldset class="gegevens-gemachtigde" id="page-three">
+            <h1><span>3</span> Gegevens</h1>
+            <p>Vul de gegevens van de gemachtigde in. De gemachtigde is degene die namens 1 of meerdere personen en/of instellingen aangifte doet.</p>
+            <p>Het invullen van een telefoonnummer of e-mailadres is niet verplicht, maar wel handig. Dan kunnen wij u makkelijker vragen stellen of uitleg geven.</p>
+            <form>
+            <fieldset>
+                <legend>2a</legend>
+                <p>Vul 1 van de 3 in: het burgerservicenummer of RSIN van de gemachtigde, het beconnummer van de adviseur of
+                    het protocolnummer van de notaris.</p>
+                <label>BSN nummer<input type="text" id="bsn" name="bsn" pattern="\d{9}" maxlength="9" placeholder="Voer uw BSN in" required></label>
+                <label>beconnummer<input type="text" id="beconnummer" name="beconnummer" pattern="\d{1,6}" maxlength="6" placeholder="Beconnummer (max. 6 cijfers)" required></label>
+                <label>protocolnummer<input type="text" id="protocolnummer" name="protocolnummer" maxlength="20" pattern="[A-Za-z0-9\- ]+" placeholder="Protocolnummer notaris" required></label>
+            </fieldset>
+       
+        </fieldset>
+        
+    </main>
+</form>
+</body>
+</html>

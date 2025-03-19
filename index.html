@@ -85,7 +85,7 @@
                         </li>
                         <li></li>
                         <li>
-                            <label for="bsn">
+                            <label>
                                 Burgerservicenummer <img src="images/warning.svg">
                                 <div class="popover">
                                     <p>Het BSN moet bestaan uit 8 of 9 cijfers.</p>
@@ -98,7 +98,7 @@
                         <li>
                             <p>Overlijdensdatum</p>
                             <div>
-                                <input type="date" name="Overlijdensdatum" required>
+                                <input type="date" name="Overlijdensdatum" id="Overlijdensdatum" required>
                         </li>
                     </ul>
                 </fieldset>
@@ -223,11 +223,19 @@
                             <input type="date" min="1900-01-01" max="2025-12-31">
                         </label>
                     </fieldset>
-
-
-
                 </fieldset>
+                <div>
+                    <ul>
+                        <li><button onclick="saveData()">Opslaan</button></li>
+                        <li><button onclick="loadData()">Laden</button></li>
+                        <li><button onclick="clearData()">Verwijderen</button></li>
+                    </ul> 
+                </div>
             </fieldset>
+
+
+
+
             <fieldset class="wrapper" id="vraag-2">
                 <h2><span>2</span> Gegevens gemachtigde</h2>
                 <p>Vul de gegevens van de gemachtigde in. De gemachtigde is degene die namens 1 of meerdere personen
@@ -288,7 +296,8 @@
                     <legend>2b</legend>
                     <ul>
                         <li>
-                            <label for="voorletters">
+                            <p>Vul de gegevens van de gemachtigde</p>
+                            <label>
                                 Voorletter(s)
                                 <input type="text" id="voorletters" name="voorletters" required
                                     pattern="^([A-Za-zÀ-ÿ]\.?(\s)?)+$" maxlength="50" placeholder="Voorletter(s)">
@@ -299,7 +308,7 @@
                                 </div>
                             </label>
 
-                            <label for="tussenvoegsel">
+                            <label>
                                 Tussenvoegsel(s)
                                 <input type="text" id="tussenvoegsel" name="tussenvoegsels" required
                                     pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$|^$" maxlength="50"
@@ -311,7 +320,7 @@
                                 </div>
                             </label>
 
-                            <label for="achternaam">
+                            <label>
                                 Achternaam
                                 <input type="text" id="achternaam" name="achternaam" required
                                     pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$" maxlength="50" placeholder="Achternaam">
@@ -408,10 +417,476 @@
 
 
                 </fieldset>
+                <div>
+                    <ul>
+                        <li><button onclick="saveData()">Opslaan</button></li>
+                        <li><button onclick="loadData()">Laden</button></li>
+                        <li><button onclick="clearData()">Verwijderen</button></li>
+                    </ul> 
+                </div>
+            </fieldset>
+
+            <fieldset class="wrapper" id="vraag-3">
+                <h3><span>3</span> Voor wie doet u aangifte?</h3>
+                <fieldset>
+                    <legend>3b</legend>
+                    <fieldset>
+                        <legend>Zijn er verkrijgers voor wie u <span>geen</span> aangifte doet?</legend>
+                        <label><input type="radio" id="v3-nee" name="v3" checked>Nee <a href="">Ga naar vraag 3c</a></label>
+                        <label><input type="radio" id="v3-ja" name="v3">Ja</label>
+                        <p> Vul hieronder de gegevens in van de verkrijgers waarvoor u geen aangifte doet.
+                            Gaat het om een instelling? Vul dan de naam van de instelling in bij ‘achternaam’.
+                            Het invullen van een bsn is niet verplicht, maar wel handig voor ons.</p>
+                    </fieldset>
+                    <fieldset>
+                        <legend>verkrijger 1</legend>
+                        <ul>
+                            <li>
+                                <label>
+                                    Burgerservicenummer <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Het BSN moet bestaan uit 8 of 9 cijfers.</p>
+                                        <p><strong>Voorbeeld:</strong> "12345678" of "123456789".</p>
+                                    </div>
+                                    <input type="text" id="bsn" name="bsn" placeholder="BSN" pattern="^\d{8,9}$"
+                                        maxlength="9" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    Voorletter(s)
+                                    <input type="text" id="voorletters" name="voorletters" required
+                                        pattern="^([A-Za-zÀ-ÿ]\.?(\s)?)+$" maxlength="50" placeholder="Voorletter(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> J.P. of A B C.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Tussenvoegsel(s)
+                                    <input type="text" id="tussenvoegsel" name="tussenvoegsels" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$|^$" maxlength="50"
+                                        placeholder="Tussenvoegsel(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'van der' of 'de'.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Achternaam
+                                    <input type="text" id="achternaam" name="achternaam" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$" maxlength="50" placeholder="Achternaam">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'Jansen' of 'De Vries'.</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                        vermogen?</legend>
+                                        <label><input type="radio" name="v3-1">Nee</label>
+                                        <label><input type="radio" name="v3-1">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Doet deze verkrijger een beroep op diens legitieme portie
+                                        (wettelijke erfdeel)?</legend>
+                                        <label><input type="radio" name="v3-1-2">Nee</label>
+                                        <label><input type="radio" name="v3-1-2">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li></li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <legend>verkrijger 2</legend>
+                        <ul>
+                            <li>
+                                <label>
+                                    Burgerservicenummer <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Het BSN moet bestaan uit 8 of 9 cijfers.</p>
+                                        <p><strong>Voorbeeld:</strong> "12345678" of "123456789".</p>
+                                    </div>
+                                    <input type="text" id="bsn" name="bsn" placeholder="BSN" pattern="^\d{8,9}$"
+                                        maxlength="9" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    Voorletter(s)
+                                    <input type="text" id="voorletters" name="voorletters" required
+                                        pattern="^([A-Za-zÀ-ÿ]\.?(\s)?)+$" maxlength="50" placeholder="Voorletter(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> J.P. of A B C.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Tussenvoegsel(s)
+                                    <input type="text" id="tussenvoegsel" name="tussenvoegsels" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$|^$" maxlength="50"
+                                        placeholder="Tussenvoegsel(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'van der' of 'de'.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Achternaam
+                                    <input type="text" id="achternaam" name="achternaam" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$" maxlength="50" placeholder="Achternaam">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'Jansen' of 'De Vries'.</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                        vermogen?</legend>
+                                        <label><input type="radio" name="v3-2">Nee</label>
+                                        <label><input type="radio" name="v3-2">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Doet deze verkrijger een beroep op diens legitieme portie
+                                        (wettelijke erfdeel)?</legend>
+                                        <label><input type="radio" name="v3-2-2">Nee</label>
+                                        <label><input type="radio" name="v3-2-2">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li></li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <legend>verkrijger 3</legend>
+                        <ul>
+                            <li>
+                                <label>
+                                    Burgerservicenummer <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Het BSN moet bestaan uit 8 of 9 cijfers.</p>
+                                        <p><strong>Voorbeeld:</strong> "12345678" of "123456789".</p>
+                                    </div>
+                                    <input type="text" id="bsn" name="bsn" placeholder="BSN" pattern="^\d{8,9}$"
+                                        maxlength="9" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    Voorletter(s)
+                                    <input type="text" id="voorletters" name="voorletters" required
+                                        pattern="^([A-Za-zÀ-ÿ]\.?(\s)?)+$" maxlength="50" placeholder="Voorletter(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> J.P. of A B C.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Tussenvoegsel(s)
+                                    <input type="text" id="tussenvoegsel" name="tussenvoegsels" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$|^$" maxlength="50"
+                                        placeholder="Tussenvoegsel(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'van der' of 'de'.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Achternaam
+                                    <input type="text" id="achternaam" name="achternaam" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$" maxlength="50" placeholder="Achternaam">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'Jansen' of 'De Vries'.</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                        vermogen?</legend>
+                                        <label><input type="radio" name="v3-3">Nee</label>
+                                        <label><input type="radio" name="v3-3">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Doet deze verkrijger een beroep op diens legitieme portie
+                                        (wettelijke erfdeel)?</legend>
+                                        <label><input type="radio" name="v3-3-2">Nee</label>
+                                        <label><input type="radio" name="v3-3-2">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li></li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <legend>verkrijger 4</legend>
+                        <ul>
+                            <li>
+                                <label>
+                                    Burgerservicenummer <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Het BSN moet bestaan uit 8 of 9 cijfers.</p>
+                                        <p><strong>Voorbeeld:</strong> "12345678" of "123456789".</p>
+                                    </div>
+                                    <input type="text" id="bsn" name="bsn" placeholder="BSN" pattern="^\d{8,9}$"
+                                        maxlength="9" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    Voorletter(s)
+                                    <input type="text" id="voorletters" name="voorletters" required
+                                        pattern="^([A-Za-zÀ-ÿ]\.?(\s)?)+$" maxlength="50" placeholder="Voorletter(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> J.P. of A B C.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Tussenvoegsel(s)
+                                    <input type="text" id="tussenvoegsel" name="tussenvoegsels" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$|^$" maxlength="50"
+                                        placeholder="Tussenvoegsel(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'van der' of 'de'.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Achternaam
+                                    <input type="text" id="achternaam" name="achternaam" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$" maxlength="50" placeholder="Achternaam">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'Jansen' of 'De Vries'.</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                        vermogen?</legend>
+                                        <label><input type="radio" name="v3-4">Nee</label>
+                                        <label><input type="radio" name="v3-4">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Doet deze verkrijger een beroep op diens legitieme portie
+                                        (wettelijke erfdeel)?</legend>
+                                        <label><input type="radio" name="v3-4-2">Nee</label>
+                                        <label><input type="radio" name="v3-4-2">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li></li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <legend>verkrijger 5</legend>
+                        <ul>
+                            <li>
+                                <label>
+                                    Burgerservicenummer <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Het BSN moet bestaan uit 8 of 9 cijfers.</p>
+                                        <p><strong>Voorbeeld:</strong> "12345678" of "123456789".</p>
+                                    </div>
+                                    <input type="text" id="bsn" name="bsn" placeholder="BSN" pattern="^\d{8,9}$"
+                                        maxlength="9" required>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    Voorletter(s)
+                                    <input type="text" id="voorletters" name="voorletters" required
+                                        pattern="^([A-Za-zÀ-ÿ]\.?(\s)?)+$" maxlength="50" placeholder="Voorletter(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> J.P. of A B C.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Tussenvoegsel(s)
+                                    <input type="text" id="tussenvoegsel" name="tussenvoegsels" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$|^$" maxlength="50"
+                                        placeholder="Tussenvoegsel(s)">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'van der' of 'de'.</p>
+                                    </div>
+                                </label>
+    
+                                <label>
+                                    Achternaam
+                                    <input type="text" id="achternaam" name="achternaam" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$" maxlength="50" placeholder="Achternaam">
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'Jansen' of 'De Vries'.</p>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                        vermogen?</legend>
+                                        <label><input type="radio" name="v3-5">Nee</label>
+                                        <label><input type="radio" name="v3-5">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li>
+                                <fieldset>
+                                    <legend>Doet deze verkrijger een beroep op diens legitieme portie
+                                        (wettelijke erfdeel)?</legend>
+                                        <label><input type="radio" name="v3-5-2">Nee</label>
+                                        <label><input type="radio" name="v3-5-2">Ja</label>
+                                </fieldset>
+                            </li>
+                            <li></li>
+                        </ul>
+                    </fieldset>
+                </fieldset>
+                <fieldset>
+                    <legend>3c</legend>
+                    <label for="v3c-1"><input type="checkbox" id="v3c-1">Stuur naar iedere verkrijger van (een deel van) de erfenis een eigen belastingaanslag.</label>
+                    <label for="v3c-2"><input type="checkbox" id="v3c-2">Stuur de belastingaanslag(en) naar de executeur of naar de erfgenaam die ook namens andere personen en/of instellingen
+                        die iets krijgen uit de nalatenschap (verkrijgers) aangifte heeft gedaan; dit mag ook de gemachtigde zijn.
+                        Wij sturen de aanslag(en) naar het adres dat u bij vraag 2 hebt ingevuld.</label>
+                        <fieldset>
+                            <legend>Ondertekening door executeur of gemachtigde</legend>
+                            <ul>
+                                <li><p>Bent u executeur? Dan moet u aangifte doen voor alle personen en/of instellingen die iets krijgen uit de nalatenschap (verkrijgers).
+                                    U ondertekent als enige dit aangifteformulier.</p></li>
+                                <li><p>Bent u gemachtigde? Dan ondertekent u dit aangifteformulier voor de personen door wie u gemachtigd bent.
+                                    Zij hoeven het aangifteformulier niet zelf te ondertekenen.</p></li>
+                                <li><p>Bent u erfgenaam en doet u samen met andere erfgenamen aangifte? Dan moeten de erfgenamen het aangifteformulier zelf
+                                    ondertekenen bij vraag 4g</p></li>
+                                <li><p>Bent u erfgenaam en doet u alleen voor uzelf aangifte? Dan ondertekent u het aangifteformulier zelf bij vraag 4g.</p></li>
+                            </ul>
+                        </fieldset>
+                    </fieldset>
+                    <fieldset>
+                        <legend>3d</legend>
+                        <p>Bent u executeur of gemachtigde?</p>
+                        <label><input type="radio" name="3d-1">Nee. <a href="">Ga verder naar vraag 4.</a></label>
+                        <label><input type="radio" name="3d-1">Ja</label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>3e</legend>
+                        <p>Gegevens van de executeur of gemachtigde</p>
+                        <ul>
+                            <li>
+                                <label>
+                                    Burgerservicenummer <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Het BSN moet bestaan uit 8 of 9 cijfers.</p>
+                                        <p><strong>Voorbeeld:</strong> "12345678" of "123456789".</p>
+                                    </div>
+                                    <input type="text" id="bsn" name="bsn" placeholder="BSN" pattern="^\d{8,9}$"
+                                        maxlength="9" required>
+                                </label>
+                                <label>Protocolnummer (als de executeur ook notaris is)
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Het protocolnummer moet bestaan uit 1 tot 5 cijfers, gevolgd door een streepje en 4
+                                            cijfers.</p>
+                                        <p><strong>Voorbeeld:</strong> "12345-2023".</p>
+                                    </div>
+                                    <input type="text" placeholder="Protocolnummer notaris" pattern="^\d{1,5}-\d{4}$"
+                                        minlength="6" maxlength="10" required>
+                                </label>
+                                <label>Beconnummer van de adviseur
+                                    <input type="radio" name="2a" id="v2a-1-2">
+                                </label>
+                                <label>
+                                    <img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters, punten en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> "J.P." of "A B C".</p>
+                                    </div>
+                                    <input type="text" placeholder="Beconnummer" pattern="\d{7}" minlength="7" maxlength="7"
+                                        aria-label="Beconnummer">
+                                </label>
+                            </li>
+                            <li>
+                        
+                                <label for="voorletters">Voorletter(s)<img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> J.P. of A B C.</p>
+                                    </div><input type="text" id="voorletters" name="voorletters" required
+                                        pattern="^([A-Za-zÀ-ÿ]\.?(\s)?)+$" maxlength="50" placeholder="voorletters">
+                                </label>
+                                <label for="tussenvoegsel">tussen-voegsel(s)<img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'van der' of 'de'.</p>
+                                    </div> <input type="text" id="tussenvoegsel" name="tussenvoegsels" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$|^$" maxlength="50"
+                                        placeholder="tussenvoegsels">
+                                </label>
+                                <label for="achternaam">achternaam<img src="images/warning.svg">
+                                    <div class="popover">
+                                        <p>Gebruik alleen letters en spaties.</p>
+                                        <p><strong>Voorbeeld:</strong> 'Jansen' of 'De Vries'.</p>
+                                    </div><input type="text" id="achternaam" name="achternaam" required
+                                        pattern="^[A-Za-zÀ-ÿ]+(\s[A-Za-zÀ-ÿ]+)*$" maxlength="50" placeholder="achternaam">
+                                </label>
+                            </li>
+                            <li>
+                                
+                            </li>
+                        </ul>
+                        
+
+                    </fieldset>
+
+
+                </fieldset>
+                <div>
+                    <ul>
+                        <li><button onclick="saveData()">Opslaan</button></li>
+                        <li><button onclick="loadData()">Laden</button></li>
+                        <li><button onclick="clearData()">Verwijderen</button></li>
+                    </ul> 
+                </div>
             </fieldset>
 
         </form>
     </main>
 </body>
-
+    <script src="js/script.js"></script>
 </html>

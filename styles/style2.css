@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "nssans";
+  font-family: "nssans",Segoe UI,Myriad,Verdana,sans-serif;
 }
 
 :root {
@@ -49,7 +49,24 @@
   --heading-l-desktop: 30px;
   --heading-m-desktop: 24px;
   --heading-s-desktop: 25px;
+
+  --toggle-bg: #ddd;
+  --toggle-circle: #fff;
 }
+
+html:has(#darkmode:checked) {
+  --grey-bodytext: #fff;
+  --grey-background: #292929;
+  --toggle-bg: #333;
+  --toggle-circle: #ff0;
+  --primary-color-4: gray;
+  --primary-color-2: #003082;
+}
+
+#darkmode {
+  display: none;
+}
+
 
 .wrapper {
   width: clamp(2em, 100%, 73.25em);
@@ -64,15 +81,12 @@ p {
   color: var(--default-text);
   width: clamp(2rem, 100%, 58rem);
 }
-h1,
-h2,
-h3,
-h4 {
+
+:is(h1, h2, h3, h4) {
   color: var(--heading-color);
+  font-size: var(--heading-l-desktop);
 }
-ul,
-ol,
-li {
+:is(ol, ul, li) {
   list-style: none;
 }
 
@@ -114,6 +128,38 @@ header {
       p {
         font-size: 18px;
       }
+
+        /* Toggle button styling */
+    .toggle {
+      width: 50px;
+      height: 25px;
+      background: var(--toggle-bg);
+      display: block;
+      border-radius: 25px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: var(--toggle-circle);
+      position: absolute;
+      top: 2.5px;
+      left: 3px;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+      /* Positie aanpassen in dark mode */
+      &:has(input:checked) .toggle::after {
+        left: 27px;
+    }
+
+      input {
+        display: none;
+      }
     }
   }
 
@@ -149,6 +195,10 @@ header {
       gap: 1rem;
       padding: 2rem 20px;
 
+      p:last-of-type{
+        margin-bottom: 2rem;
+      }
+
       > div {
         display: grid;
         height: max-content;
@@ -156,7 +206,7 @@ header {
         justify-self: center;
         position: relative;
         > img {
-          height: 25vh;
+          height: 20rem;
           width: 100%;
           object-fit: cover;
         }
@@ -180,6 +230,7 @@ form {
   padding: 10px 20px;
   display: grid;
   gap: 3rem;
+  color: var(--grey-bodytext);
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -194,7 +245,7 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-input:not([type="radio"]):not([type="file"]) {
+input:not([type="radio"]):not([type="file"]):not([type=checkbox]) {
   background-color: #fff;
   color: #003082;
   font-weight: 700;
@@ -286,7 +337,6 @@ label:has([type="radio"]) {
       }
     }
   }
-
   input {
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     height: 1rem;
@@ -330,6 +380,69 @@ label:has([type="radio"]) {
   }
 }
 
+form label:has([type="checkbox"]:checked)::before{
+    background-color: #00aa89;
+    border-color: transparent;
+}
+form label:has([type="checkbox"]:checked)::after{
+transform: scale(1) rotate(-45deg);
+}
+
+form label:has([type="checkbox"]){
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    gap: 2rem;
+
+    input{
+        clip-path: polygon(0 0,0 0,0 0,0 0);
+        height: 1rem;
+        margin: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 1px;
+    }
+
+    &::before{
+        background: transparent;
+        border: .0625rem solid #cdcdd3;
+        border-radius: .125rem;
+        content: "";
+        cursor: pointer;
+        height: 1rem;
+        left: 0;
+        position: absolute;
+        top: .125rem;
+        transition: all .2s cubic-bezier(.7,.27,.27,1);
+        width: 1rem;
+    }
+
+    &::after{
+        border: .1875rem solid #fff;
+        border-top-width: 0.1875rem;
+        border-top-style: solid;
+        border-top-color: rgb(255, 255, 255);
+        border-right-width: 0.1875rem;
+        border-right-style: solid;
+        border-right-color: rgb(255, 255, 255);
+        border-radius: 2px;
+        border-right: none;
+        border-top: none;
+        content: "";
+        height: .3rem;
+        left: .3125rem;
+        position: absolute;
+        top: .5rem;
+        -webkit-transform: scale(0) rotate(-45deg);
+        transform: scale(0) rotate(-45deg);
+        -webkit-transform-origin: 30% 70%;
+        transform-origin: 21% 80%;
+        transition: all .3s cubic-bezier(.7,.27,.27,1);
+        width: .675rem;
+    }
+  }
+
+
 .popover {
   width: clamp(5rem, 100%, 25rem);
   height: auto;
@@ -348,7 +461,7 @@ form > fieldset {
   background: var(--primary-color-4);
   display: grid;
   gap: 2rem;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 0.5rem;
 
   > fieldset {
@@ -362,13 +475,34 @@ form > fieldset {
   }
 }
 
+form>fieldset{
+  > div{
+    display: flex;
+    justify-content: flex-end;
+    ul{
+      display: flex;
+      gap: 1rem;
+      button{
+        padding: .5rem 1rem;
+        border: 1px solid var(--primary-color-2);
+        background: white;
+        border-radius: .25rem;
+        cursor: pointer;
+
+        &:hover{
+          background: var(--button-hover-yellow);
+          color: white;
+          border: none;
+        }
+      }
+    }
+  }
+}
+
+
 form > fieldset:first-of-type {
   container-type: inline-size;
   container-name: --container-1a;
-
-  > h1 {
-    font-size: var(--heading-l-mobile);
-  }
 
   > fieldset:not(:first-of-type) {
     margin-top: 2em;
@@ -468,7 +602,7 @@ form > fieldset:first-of-type {
   > fieldset:nth-of-type(3) {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 
     &:has(#ja-1c-1:checked) .vraag-1c {
       display: grid;
@@ -477,6 +611,7 @@ form > fieldset:first-of-type {
     > fieldset {
       legend {
         padding: 1rem 0 1rem 0;
+        margin-bottom: 1rem;
       }
 
       &:nth-of-type(1) {
@@ -565,6 +700,11 @@ form > fieldset:nth-of-type(2) {
   p {
     width: 100%;
   }
+  > fieldset:nth-of-type(2){
+    p{
+        margin-bottom: 1rem;
+    }
+  }
   fieldset:nth-of-type(1) {
     display: grid;
     gap: 1rem;
@@ -589,53 +729,175 @@ form > fieldset:nth-of-type(2) {
     }
   }
 
-  fieldset:nth-of-type(2){
-    > ul{
-        display: grid;
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto;
-        grid-template-areas: "c1 c2"
-                             "c4 c3";
-        gap: 5rem;
+  fieldset:nth-of-type(2) {
+    > ul {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: auto auto auto;
+      grid-template-areas:
+        "c1 c4 c2"
+        "c1 c4 c3";
+      gap: 5rem;
 
-        li{
-            display: flex;
-            flex-direction: column;
+      > li {
+        display: flex;
+        flex-direction: column;
 
-            &:first-of-type{
-                gap: 1rem;
-                grid-area: c1;
-            }
-
-            &:nth-of-type(2){
-                grid-area: c2;
-            }
-
-            &:nth-of-type(3){
-                grid-area: c3;
-            }
-
-            &:last-of-type{
-                gap: 1rem;
-                grid-area: c4;
-            }
-            label{
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 1rem;
-                flex-wrap: wrap;
-            }
-
-            >fieldset > legend{
-                font-weight: bold;
-                margin-bottom: 1rem;
-            }
+        &:first-of-type {
+          gap: 1rem;
+          grid-area: c1;
         }
+
+        &:nth-of-type(2) {
+          grid-area: c2;
+          justify-self: flex-start;
+        }
+
+        &:nth-of-type(3) {
+          grid-area: c3;
+          justify-self: flex-start;
+        }
+
+        &:last-of-type {
+          grid-area: c4;
+          height: 100%;
+          width: 2px;
+          background-color: var(--grey-background);
+          justify-self: center;
+        }
+        label {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        > fieldset > legend {
+          font-weight: bold;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}
+
+form > fieldset:nth-of-type(3) {
+  > fieldset {
+    display: grid;
+    gap: 2rem;
+    > fieldset:nth-of-type(1) {
+      display: grid;
+      gap: 1rem;
+      > legend {
+        margin-bottom: 1rem;
+        > span{
+            font-weight: bold;
+        }
+      }
+      > p {
+        font-weight: bold;
+        width: 100%;
+      }
     }
 
+    > fieldset {
+      > p {
+        display: none;
+      }
+      &:has(#v3-ja:checked) > p {
+        display: block;
+      }
+    }
+
+    &:has(#v3-ja:checked) > fieldset:nth-of-type(2) {
+      display: block;
+    }
+
+    /* , [type=radio]:checked */
+    > fieldset:nth-of-type(n + 2):has([type="text"]:not(:placeholder-shown))
+      + fieldset {
+      display: block;
+    }
+
+    &:has(#v3-nee:checked) > fieldset:nth-of-type(n + 2) {
+      display: none;
+    }
+
+    > fieldset:nth-of-type(n + 2) {
+      display: none;
+    }
+
+    > fieldset:not(:first-of-type) {
+      padding: 2rem;
+      border-radius: 1rem;
+      border: solid 1px var(--primary-color-1);
+
+      legend {
+        margin-bottom: 1rem;
+      }
+      > legend {
+        text-transform: capitalize;
+        color: var(--primary-color-2);
+        font-weight: bold;
+        padding: 1rem;
+        margin-bottom: 0rem;
+      }
+
+      label:has([type="text"]) {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      ul {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 5rem 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+          "v3-2 v3-5 v3-3"
+          "v3-1 v3-5 v3-4";
+        li {
+          display: grid;
+          gap: 1rem;
+
+          > fieldset {
+            display: grid;
+            gap: 1rem;
+          }
+
+          &:nth-child(1) {
+            grid-area: v3-1;
+          }
+          &:nth-child(2) {
+            grid-area: v3-2;
+          }
+          &:nth-child(3) {
+            grid-area: v3-3;
+            > fieldset {
+              display: flex;
+              flex-direction: column;
+              gap: 1rem;
+            }
+          }
+          &:nth-child(4) {
+            grid-area: v3-4;
+          }
+          &:nth-child(5) {
+            grid-area: v3-5;
+            height: 100%;
+            width: 2px;
+            background-color: var(--grey-background);
+            justify-self: center;
+          }
+        }
+      }
+    }
   }
+
 }
 
 .v2a-1 {
@@ -691,15 +953,21 @@ form > fieldset:nth-of-type(2) {
 }
 
 @media (max-width: 400px) {
-
+  form {
+    padding: 10px 10px;
+  }
+  :is(h1, h2, h3, h4) {
+    color: var(--heading-color);
+    font-size: var(--heading-l-mobile);
+  }
 
   form > fieldset:first-of-type {
     & > fieldset:first-of-type {
       & ul {
         & li {
-            >label{
-                flex-direction: column;
-            }
+          > label {
+            flex-direction: column;
+          }
           &:nth-of-type(3) {
             .popover {
               bottom: -11.1vh;
@@ -750,6 +1018,10 @@ form > fieldset:nth-of-type(2) {
     }
   }
 
+  form > fieldset {
+    padding: 1rem;
+  }
+
   .popover {
     left: 0;
     min-width: 5em;
@@ -762,33 +1034,56 @@ form > fieldset:nth-of-type(2) {
     }
   }
 
-  fieldset:nth-of-type(2){
-    > ul{
-        display: flex;
-    flex-direction: column;
-}
-}
+  fieldset:nth-of-type(2) {
+    > ul {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 
-form > fieldset:nth-of-type(2) {
+  form > fieldset:nth-of-type(2) {
     & fieldset:nth-of-type(2) {
-        & > ul {
-            & li {
-                label {
-                    flex-direction: column;
-                    align-items: initial;
-                }}}}
-}
-}
+      & > ul {
+        & li {
+          label {
+            flex-direction: column;
+            align-items: initial;
+          }
+        }
+      }
+    }
+  }
 
+  form > fieldset:nth-of-type(3) {
+    > fieldset {
+      > fieldset:not(:first-of-type) {
+        padding: 1rem;
+
+        label:has([type="text"]) {
+          flex-direction: column;
+          align-items: initial;
+          gap: 1rem;
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+        }
+
+        li:last-of-type {
+          display: none;
+        }
+      }
+    }
+  }
+}
 
 @media (max-width: 800px) {
-    form > fieldset:nth-of-type(2){
-        > fieldset:nth-of-type(2){
-             > ul{
-                 display: flex;
-             flex-direction: column;
-         }
-         }
- 
- }
+  form > fieldset:nth-of-type(2) {
+    > fieldset:nth-of-type(2) {
+      > ul {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }

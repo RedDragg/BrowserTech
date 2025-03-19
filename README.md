@@ -22,6 +22,12 @@ Ik heb nagedacht over de dingen die ik heb gehoord. Vasisli - Begin met de styli
 
 Zo ben ik stap voor stap overgegaan naar een verbeterde website.
 
+<img src="readmeimg/checkbox-BT.gif">
+<img src="readmeimg/hover-BT.gif">
+<img src="readmeimg/radiobox-BT.gif">
+<img src="readmeimg/hoverpopover-BT.gif">
+<img src="readmeimg/targetinput-BT.gif">
+
 week#4
 
 In week 4 heb ik gekeken naar Javascript componenten en heb ik buttons gemaakt waar je je invoervelden kan opslaan, verwijderen en laden.

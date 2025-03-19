@@ -13,6 +13,8 @@ Week#2
 
 In week 2 heb ik mij gefocust op de :has selectors.
 
+dit is me website:
+<img src="readmeimg/index1.gif">
 
 week#3
 
@@ -22,11 +24,30 @@ Ik heb nagedacht over de dingen die ik heb gehoord. Vasisli - Begin met de styli
 
 Zo ben ik stap voor stap overgegaan naar een verbeterde website.
 
-<img src="readmeimg/checkbox-BT.gif">
-<img src="readmeimg/hover-BT.gif">
+Checkbox check:
+<img src="readmeimg/checkbox-BT.gif"> 
+
+radiobox check:
 <img src="readmeimg/radiobox-BT.gif">
-<img src="readmeimg/hoverpopover-BT.gif">
+
+Input text hover:
+<img src="readmeimg/hover-BT.gif">
+
+Input text target:
 <img src="readmeimg/targetinput-BT.gif">
+
+Input popover:
+<img src="readmeimg/hoverpopover-BT.gif">
+
+
+vraag1:
+<img src="readmeimg/vraag1.gif">
+
+vraag2:
+<img src="readmeimg/vraag2.gif">
+
+vraag3:
+<img src="readmeimg/vraag3.gif">
 
 week#4
 
